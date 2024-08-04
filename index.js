@@ -38,6 +38,8 @@ function addTasks(){
     taskContainer.appendChild(taskDIV)
     taskadded.value = ""
 
+    localStorage.setItem('taskDetails', taskContainer.innerHTML)
+
 }
 
 taskContainer.addEventListener('click', ButtonForDelete);
@@ -61,4 +63,13 @@ function ButtonForDelete(event){
             count = true
         }
     }
+
+    localStorage.setItem('taskDetails', taskContainer.innerHTML)
 }
+
+function restoreElement(){
+    savedValue = localStorage.getItem('taskDetails')
+    taskContainer.innerHTML = savedValue
+}
+
+window.onload = restoreElement
